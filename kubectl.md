@@ -29,6 +29,8 @@ Each time you run a `kubectl` command, the `kubextl` command-line tool will look
 
 To view the config file currently used by your local kubectl
 
+<br>
+
 | Component Name            | Communicates With                                                                         | Role                                                                                                                                                                                          |
 | ------------------------- | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Kube-apiserver            | kubectl client(s), etcd, kube-scheduler, kube-controller-manager, kubelet, and kube-proxy | The HTTP REST API. It can read and write the state stored in Etcd. The only componet that is able to communicate with Etcd directly                                                           |
@@ -38,3 +40,19 @@ To view the config file currently used by your local kubectl
 | kubelet                   | kube-apiserver and docker (container run time)                                            | This reads the API every 20 seconds to get pods scheduled to the node it's running on, and translates the pod specs into running containers by calling the local deamon.                      |
 | kube-proxy                | kube-apiserver                                                                            | This implements the networking layer of kubernetes                                                                                                                                            |
 | container engine (docker) | kubelet                                                                                   | This runs the container by recieving instructions from the local kubelet                                                                                                                      |
+
+`minikube start --driver=docker`
+
+`minikube status`
+
+`kubectl config view`
+
+`kubectl config current-context`
+
+`kubectl get nodes`
+
+`kubectl get componentstatuses` same as `kubectl get cs`
+
+`minikube stop`
+
+`minikube delete`
