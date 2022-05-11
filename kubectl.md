@@ -56,3 +56,12 @@ To view the config file currently used by your local kubectl
 `minikube stop`
 
 `minikube delete`
+
+### Launching our first pod.
+
+#### Creating pod with imperative syntax
+
+- Need two parameters to create a pod. <br>
+- Pod's name defined by you. <br>
+- The Docker image(s) to build it's underlying container(s).
+  `kubectl run nginx-Pod --image nginx:latest`
