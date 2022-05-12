@@ -100,3 +100,9 @@ listing ans saving to a file `kubectl get pods/pod-name -o yaml > filename.yaml`
 ### Adding or updating a label to/of a runnign pod
 
 `kubectl label pods nginx-pod stack=blue`
+
+### Deleting a label attached to a running pod
+
+`kubectl label nginx-pod stack-`
+
+### Adding an annotation
