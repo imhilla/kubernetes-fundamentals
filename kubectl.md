@@ -106,3 +106,26 @@ listing ans saving to a file `kubectl get pods/pod-name -o yaml > filename.yaml`
 `kubectl label nginx-pod stack-`
 
 ### Adding an annotation
+
+### create a pod with a yaml file
+
+`kubectl create -f file.yaml`
+
+### Launching your first job
+
+Job is a kubernetes resource that is derived from a pod: the job resource. In kubernetes, a computing resource is a pod and everything else is just an intermediate resource that manipulates pods.
+This is the case for the jobs object, which is an object that will create one or multiple pods to complete a specific computing task, such as running a linux command.
+
+### What are jobs?
+
+Resource that is exposed by the kubernetes API. In the end , a job will create one or multiple pods to execute a command defined by you. Jobs are meant to handle specific tasks then exit.
+
+#### Typical cases.
+
+- Taking a backup of a database.
+- sending an email.
+- Consuming some message in a queue.
+
+### Creating a job with restart policy.
+
+`kubectl create -f hello-world-job.yaml`
