@@ -65,3 +65,8 @@ To view the config file currently used by your local kubectl
 - Pod's name defined by you. <br>
 - The Docker image(s) to build it's underlying container(s).
   `kubectl run nginx-Pod --image nginx:latest`
+`kubectl get pods`
+`kubectl describe pods podname`
+
+### Listing the objetcs in JSON or YAML
+USE `-O` option
