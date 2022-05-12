@@ -65,8 +65,38 @@ To view the config file currently used by your local kubectl
 - Pod's name defined by you. <br>
 - The Docker image(s) to build it's underlying container(s).
   `kubectl run nginx-Pod --image nginx:latest`
-`kubectl get pods`
-`kubectl describe pods podname`
+  `kubectl get pods`
+  `kubectl describe pods podname`
 
 ### Listing the objetcs in JSON or YAML
+
 USE `-O` option
+listing ans saving to a file `kubectl get pods/pod-name -o yaml > filename.yaml`
+
+### Getting more information from the list operation
+
+`kubectl get pods -o wide`
+
+### Accessing a pod from the outside world
+
+`kubectl port-forward Pod/nginx-Pods 8080:80`
+
+### Entering a container inside a pod
+
+`$ kubectl exec -ti Pods nginx-Pod bash`
+
+### Delete a pod
+
+`kubectl delete pods pod-name`
+
+### List pods using labels
+
+`kubectl get pods -l environment=production`
+
+### Listing labels attached to a pod
+
+`kubectl get pods --show-labels`
+
+### Adding or updating a label to/of a runnign pod
+
+`kubectl label pods nginx-pod stack=blue`
