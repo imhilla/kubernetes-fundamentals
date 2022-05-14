@@ -41,3 +41,50 @@ Then you have two choices
   `kubectl delete pods/nginx-pod` or `kubectl delete pods nginx-pod`
 
 ### Accessing a specific container inside a multi-container pod.
+
+To access a running container, you need to use the `kubectl exec` command, just like you need to use `docker exec` to launch a command in an already created container when using docker with kubernetes.
+The command will ask for two important parameters.
+
+- The pod that wraps the container you want to get
+- The name of the container itself, as entered in the YAML manifest file.
+
+First, we will have to use `kubectl describe pods/multi-container-pod` command to find out what is contained in this pod.
+
+This command will show you the names of all containers in the targeted pod.
+Access a single container.
+use `kubectl exec -ti multi-container-pod --container nginx-container -- /bin/bash`
+`kubectl exec` does the same as `docker exec`
+
+### Running commands in containers
+
+To run a command in a container, you need to use `kubectl exec`
+`kubectl exec pods/multi-container-pod --container nginx-container -- ls`
+This command will ask you for two parameters
+
+- The name of the container
+- The name of the pod
+
+### Overriding the default commands run by your containers
+
+Docker files make use of two keywords to tell us what commands and arguments
+the containers that were built with this image will launch when they are created using the command `docker run` command.
+The keywords are
+`ENTRYPOINT` and `CMD`
+Entry point is the main command the docker container will launch.
+CMD is used to replace the parameters that are passed to the ENTRYPOINT command.
+
+Kubernetes allows us to override both ENTRYPOINT and CMD thanks to YAML pod definition file.
+To do so, you must append two optional keys to your YAML configuration file: command and args
+
+### introducing the initContainers
+
+initContainers is a feature provided by kubernetes pods to run setup script before the actual container starts.
+They will run first when the pod is created, then once they are complete, the pods start creating its main containers.
+In general initContainers are used to pull application code from a git repository and expose it to the main containers using volume mounts or to run start-up scripts.
+`kubectl create -f nginx-with-init-container.yaml`
+
+### Accessing the logs of a specific container
+
+The proper way to proceed is by using the `kubectl logs` command
+`kubectl logs -f pods/multi-container-pods --container nginx-container`
+
