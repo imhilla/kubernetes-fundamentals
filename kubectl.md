@@ -126,6 +126,15 @@ Resource that is exposed by the kubernetes API. In the end , a job will create o
 - sending an email.
 - Consuming some message in a queue.
 
+### Capabilities of jobs.
+
+- Running Pods multiple times.
+- Running pods multiple times in parallel.
+- Retrying to launch the pods if they encounter any errors.
+- Killing a pod after a specified number of seconds.
+- A job manages the labels of the pods it will create so that you won't have to manage
+  the labels on those pods directly.
+
 ### Creating a job with restart policy.
 
 `kubectl create -f hello-world-job.yaml`
