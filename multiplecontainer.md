@@ -87,3 +87,11 @@ In general initContainers are used to pull application code from a git repositor
 
 The proper way to proceed is by using the `kubectl logs` command
 `kubectl logs -f pods/multi-container-pods --container nginx-container`
+
+### Sharing volumes between containers in the same pod
+### What are kubernetes volume?
+kubernetes has two types of volumes
+- Volumes
+- persistent volume
+
+### Creating and mounting an emptyDir volume  
