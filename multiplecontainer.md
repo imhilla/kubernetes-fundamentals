@@ -39,3 +39,5 @@ Then you have two choices
   `kubectl delete -f multi-container-pods.yaml`
   You delete the pod without using its YAML PATH if you know it's name.
   `kubectl delete pods/nginx-pod` or `kubectl delete pods nginx-pod`
+
+### Accessing a specific container inside a multi-container pod.
