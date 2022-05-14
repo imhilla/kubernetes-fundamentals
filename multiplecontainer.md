@@ -87,4 +87,3 @@ In general initContainers are used to pull application code from a git repositor
 
 The proper way to proceed is by using the `kubectl logs` command
 `kubectl logs -f pods/multi-container-pods --container nginx-container`
-
