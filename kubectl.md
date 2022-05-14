@@ -178,11 +178,17 @@ if your want to delete the jobs but not the pods it created you can add the `--c
 `kubectl delete jobs job-name --cascade=false`.
 
 ### Launching your first cronjob
+
 #### What are cronjobs
-The name cronjob can mean two different things 
+
+The name cronjob can mean two different things
+
 - The UNIX cron feature
 - The kubernetes cronjob resource.
 
 ### Creating your first cronjob
-Create a cronjob file 
+
+Create a cronjob file
 `kubectl create -f jo-filename`
+Delete cron job
+` kubectl delete -f ~/cronjob.yaml`
