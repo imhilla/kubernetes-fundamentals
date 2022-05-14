@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: failed-multi-container-pod
+spec:
+  containers:
+    - name: nginx-container
+      image: latest
+    - name: busybox-container
+      image: busybox:latest
