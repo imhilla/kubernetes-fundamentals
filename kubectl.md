@@ -138,3 +138,51 @@ Resource that is exposed by the kubernetes API. In the end , a job will create o
 ### Creating a job with restart policy.
 
 `kubectl create -f hello-world-job.yaml`
+This job will create a pod based on the docker busybox image.
+
+The restart policy parameter can take two options:
+
+- Never
+- OnFailure
+
+### Understanding the job's backOffLimit
+
+By default, the kubernetes job will try to relaunch the failing pod 6 times during the next 6 minutes after its failure. You can change its limitations by changing the backOffLimit option.
+
+### Running a task multiple times using completions
+
+You can also instruct kubernetes to launch multiple times using the job object
+You can do this by using the completions option to specify the number of times you want a command to be executed. The number of completions will create five diffrent pods that will be launched one after the other.
+Once one pod has finished, the next one will be started.
+
+### Running a task multiple times in parallel
+
+The completions option ensures that the pod s are created one after the other. You can also enforce parallel execution using the `parallelism` option. If you do that, you can get rid of the completions option.
+
+### Terminating a job after a specific amount of time.
+
+You can also terminate a pod after a specific amount of time. This can be very useful when you are running a job that is meant to consume a queue, for example.
+You could poll a messages for 1 minute and then automatically terminate the process. You can do that using the `activeDeadLineSeconds` parameter.
+
+### What happens if a job succeedss
+
+If your job is completed, it will remain created in your kubernetes
+cluster and will not be deleted automatically, that's default behaviour.
+You can delete the jobs automatically and the pods they created by using the delete `ttlSecondsAfterFinished` option,
+
+### Deleting a job
+
+Deliting a job will result in deleting the pods they manage.
+`kubectl delete jobs job-name`
+if your want to delete the jobs but not the pods it created you can add the `--cascade=false` parameter to the `delete` command
+`kubectl delete jobs job-name --cascade=false`.
+
+### Launching your first cronjob
+#### What are cronjobs
+The name cronjob can mean two different things 
+- The UNIX cron feature
+- The kubernetes cronjob resource.
+
+### Creating your first cronjob
+Create a cronjob file 
+`kubectl create -f jo-filename`

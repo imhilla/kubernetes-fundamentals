@@ -1,12 +1,9 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: batch/v1beta1
+kind: CronJob
 metadata:
-  name: hello-world-job
+  name: hello-world-cronjob
 spec:
-  # completions: 10
-  # parallelism: 5
-  backoffLimit: 3
-  # activeDeadlineSeconds: 60
+  schedule:
   ttlSecondsAfterFinished: 30
   template:
     metadata:
@@ -17,4 +14,4 @@ spec:
         - name: hello-world-container
           image: busybox
           command: ["/bin/sh", "-c"]
-          args: ["echo 'Hello world': sleep 3"]
+          args: ["echo 'Hello world'"]
